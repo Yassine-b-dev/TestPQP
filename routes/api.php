@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\MoviesController;
+use App\Http\Controllers\ApiMoviesController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::get("movies", [ApiMoviesController::class, 'movieOfMonths']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
