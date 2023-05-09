@@ -34,7 +34,7 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
 
                                 <NavLink :href="route('movies')" :active="route().current('movies')">
-                                    Voir film du mois
+                                    Voir films de la semaine
                                 </NavLink>
                             </div>
                         </div>

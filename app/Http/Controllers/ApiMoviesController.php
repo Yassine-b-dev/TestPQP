@@ -4,20 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-
+use App\Models\Movie;
+use Inertia\Inertia;
 
 class ApiMoviesController extends Controller
 {
-    public function movieOfMonths(){
+    public function movieOfWeek(){
 
-        $tmdb_id = 436270; //Black Adam (2022) Movie TMDB ID
 
-        $response = Http::asJson()
-            ->get(config('services.tmdb.endpoint').'trending/movie/day?api_key='.config('services.tmdb.api'));
-            
-        $data = json_decode($response->getBody(), true);
-
+        $data = Movie::all();
+        /* $data = json_decode($data->getBody(), true);
+        dd($data); */
         
-       return $data;
+        //$listMovies = $data->toArray();
+        
+        
+        return "$data";
+    }
+
+    public function movieDetail($id){
+        $film = Movie::findOrFail($id);
+        
+        return Inertia::render('Movie', [
+            'film' => "hello"
+        ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MoviesController;
+use App\Http\Controllers\ApiMoviesController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +39,13 @@ Route::middleware('auth')->group(function () {
 Route::get('/movies', function () {
     return Inertia::render('Movies');
 })->middleware(['auth', 'verified'])->name('movies');
+
+/* Route::get('/movies/{id}', function () {
+    return Inertia::render('Movie');
+})->middleware(['auth', 'verified'])->name('movie'); */
+
+Route::get("movies/{id}", [ApiMoviesController::class, 'movieDetail']);
+
 
 //Route::get('/movies', [MoviesController::class, 'movieOfMonths'])->name('movies');
 
