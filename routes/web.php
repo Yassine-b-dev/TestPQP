@@ -40,11 +40,11 @@ Route::get('/movies', function () {
     return Inertia::render('Movies');
 })->middleware(['auth', 'verified'])->name('movies');
 
-/* Route::get('/movies/{id}', function () {
+Route::get('/movies/{id}', function () {
     return Inertia::render('Movie');
-})->middleware(['auth', 'verified'])->name('movie'); */
+})->middleware(['auth', 'verified'])->name('movie');
 
-Route::get("movies/{id}", [ApiMoviesController::class, 'movieDetail']);
+//Route::get("movies/{id}", [ApiMoviesController::class, 'movieDetail']);
 
 
 //Route::get('/movies', [MoviesController::class, 'movieOfMonths'])->name('movies');

@@ -25,8 +25,11 @@ class ApiMoviesController extends Controller
     public function movieDetail($id){
         $film = Movie::findOrFail($id);
         
-        return Inertia::render('Movie', [
-            'film' => "hello"
-        ]);
+        // return Inertia::render('Movie', [
+        //     'film' => "hello"
+        // ]);
+
+        //return Inertia::render('Movie', ['film' => $film]);
+        return $film;
     }
 }
