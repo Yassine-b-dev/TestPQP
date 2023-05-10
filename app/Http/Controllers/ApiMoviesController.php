@@ -9,17 +9,20 @@ use Inertia\Inertia;
 
 class ApiMoviesController extends Controller
 {
+
+
+
     public function movieOfWeek(){
 
 
-        $data = Movie::all();
+        $data = Movie::orderBy('created_at', 'desc')->paginate(20);
         /* $data = json_decode($data->getBody(), true);
         dd($data); */
         
-        //$listMovies = $data->toArray();
+        $listMovies = $data->toArray();
         
         
-        return "$data";
+        return $listMovies["data"];
     }
 
     public function movieDetail($id){
@@ -32,4 +35,74 @@ class ApiMoviesController extends Controller
         //return Inertia::render('Movie', ['film' => $film]);
         return $film;
     }
+
+
+    public function index()
+    {
+        return Movie::all();
+    }
+
+
+
+       /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required',
+            
+        ]);
+    
+        return Movie::create($request->all());
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Movie $movie)
+    {
+        return $movie;
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Movie $movie)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Movie $movie)
+    {
+        $request->validate([
+            'title' => 'required',
+        ]);
+    
+        $movie->update($request->all());
+    
+        return $movie;
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Movie $movie)
+    {
+        $movie->delete();
+        
+        return response()->json(['message' => 'Movie deleted successfully']);
+    }
+
 }
