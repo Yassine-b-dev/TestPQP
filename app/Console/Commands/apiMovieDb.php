@@ -21,7 +21,7 @@ class apiMovieDb extends Command
     *
     * @var string
     */
-    protected $description = 'YASSSSSSINEYASSSSSSINEYASSSSSSINEYASSSSSSINEYASSSSSSINEYASSSSSSINE';
+    protected $description = 'Récupère les films du jour';
     
     /**
     * Execute the console command.
