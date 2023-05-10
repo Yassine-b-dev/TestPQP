@@ -36,8 +36,18 @@ const showingNavigationDropdown = ref(false);
                                 <NavLink :href="route('movies')" :active="route().current('movies')">
                                     Voir films de la semaine
                                 </NavLink>
+
+                                <NavLink :href="route('moviesList')" :active="route().current('moviesList')">
+                                    Voir tout les films
+                                </NavLink>
+
+                                <NavLink :href="route('moviesSearch')" :active="route().current('moviesSearch')">
+                                    Rechercher un film
+                                </NavLink>
                             </div>
                         </div>
+
+                    
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <!-- Settings Dropdown -->

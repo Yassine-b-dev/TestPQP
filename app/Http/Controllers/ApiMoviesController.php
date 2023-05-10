@@ -84,8 +84,11 @@ class ApiMoviesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Request $request, $id)
     {
+
+        $movie = Movie::find($id);
+
         $request->validate([
             'title' => 'required',
         ]);
@@ -98,11 +101,19 @@ class ApiMoviesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Movie $movie)
+    public function destroy($id)
     {
+        $movie = Movie::find($id);
         $movie->delete();
         
         return response()->json(['message' => 'Movie deleted successfully']);
     }
+
+    // public function search(Request $request)
+    // {
+    // $searchTerm = $request->input('search');
+    // $movies = Movie::where('title', 'like', "%$searchTerm%")->get();
+    // return response()->json($movies);
+    // }
 
 }

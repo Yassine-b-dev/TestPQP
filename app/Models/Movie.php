@@ -15,6 +15,5 @@ class Movie extends Model
         'poster_path',
         'vote_average',
         'release_date',
-        'id_api'
     ];
 }

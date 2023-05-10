@@ -40,9 +40,21 @@ Route::get('/movies', function () {
     return Inertia::render('Movies');
 })->middleware(['auth', 'verified'])->name('movies');
 
+Route::get('/moviesList', function () {
+    return Inertia::render('MovieList');
+})->middleware(['auth', 'verified'])->name('moviesList');
+
 Route::get('/movies/{id}', function () {
     return Inertia::render('Movie');
 })->middleware(['auth', 'verified'])->name('movie');
+
+Route::get('/movies/{id}/edit', function () {
+    return Inertia::render('MovieForm');
+})->middleware(['auth', 'verified'])->name('movieEdit');
+
+Route::get('/moviesSearch', function () {
+    return Inertia::render('MoviesSearch');
+})->middleware(['auth', 'verified'])->name('moviesSearch');
 
 //Route::get("movies/{id}", [ApiMoviesController::class, 'movieDetail']);
 
